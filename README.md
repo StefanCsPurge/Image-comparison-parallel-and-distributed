@@ -16,6 +16,8 @@ The project has 2 implementations: one with "regular" threads, and one distribut
 - in the pre-processing phase we make sure that our 2 input images have the same size (which in any case is size of the smaller image)
 - after that, we split into n cells the 2 images that we have (n is the number of processes that we run, this number should be a square number)
 - each image patch is saved separately in another directory
+- the reconstructed result has the differences marked with neon green like this:
+[!result](https://github.com/StefanCsPurge/Image-comparison-parallel-and-distributed/blob/main/results/final_image.jpg)
 
 # Threaded version
 - use a list for the threads
