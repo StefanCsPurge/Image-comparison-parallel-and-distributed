@@ -5,18 +5,19 @@ This application helps in visualising the exact differences between 2 similar im
 
 The project has 2 implementations: one with "regular" threads, and one distributed (using MPI).
 
-#Running the application
-- the threaded implementation runs out of the box with <code>python main.py</code>
+# Running the application
+- needed pip installs: scikit-image, opencv-python
+- afterwards, the threaded implementation runs out of the box with <code>python main.py</code>
 - to run the MPI implementation on Windows: FIRST install Microsoft MPI v10.0, and ONLY THEN install mpi4py with <code>python -m pip install mpi4py</code>
 - the properties/options for running can be set in the properties.py file
 
-#General idea of the algorithm
+# General idea of the algorithm
 - we use 2 images, that are quite the same with some differences (some drawings on top)
 - in the pre-processing phase we make sure that our 2 input images have the same size (which in any case is size of the smaller image)
 - after that, we split into n cells the 2 images that we have (n is the number of processes that we run, this number should be a square number)
 - each image patch is saved separately in another directory
 
-#Threaded version
+# Threaded version
 - use a list for the threads
 - read 2 images at a time (representing patches from the first and second image) and start the thread function
 - in the thread function we grayscale the 2 patches, and we apply structural_similarity using skimage library
@@ -26,7 +27,7 @@ The project has 2 implementations: one with "regular" threads, and one distribut
 - after all threads finish execution, we join all the threads and use the master thread to build the image back as it was before, but this time highlighted
 - write the final image to disk
 
-#Distributed version
+# Distributed version
 - the distributed part is done using MPI
 - get the rank and size
 - check for the master process
